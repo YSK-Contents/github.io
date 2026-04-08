@@ -78,6 +78,7 @@ Do NOT:
 - **Push**: `git push -u origin <branch-name>`
 - **Commit message**: Descriptive, one line summary of the newsletter topic
 - **Do NOT push to main** without explicit user instruction
+- **One file per commit**: Do not bundle multiple file changes into a single commit
 
 ## Subagent Usage
 
