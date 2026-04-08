@@ -19,24 +19,14 @@ README.md
 
 ## Newsletter Creation Workflow
 
-### Step 1 — Research
-Use the `general-purpose` agent (with WebSearch/WebFetch) to research today's news across:
-- 英語学習関連（AI tools, language learning trends, studies）
-- グローバル・世界情勢（geopolitics, major events）
-- ビジネス・経営（startups, management, economic trends）
+Use `/newsletter` slash command for daily issue creation (`.claude/commands/newsletter.md`).
+The command automates research → write → review → commit/push.
 
-Gather concrete facts, numbers, and names. Do not fabricate.
-
-### Step 2 — Write
-Create `newsletters/YYYY-MM-DD.md` following the style rules below.
-
-### Step 3 — Self-review before committing
-- [ ] 事実に誤りはないか（数字・固有名詞を確認）
-- [ ] 冗長な箇所はないか
-- [ ] 読者の行動につながるか（具体的なアクションがあるか）
-
-### Step 4 — Commit and push
-Commit to the active feature branch and push.
+Manual steps if needed:
+1. Research with `general-purpose` agent (WebSearch/WebFetch) in parallel across 3 topics
+2. Write `newsletters/YYYY-MM-DD.md` per style rules below
+3. Self-review: facts accurate? concise? reader action included?
+4. Commit and push to active feature branch
 
 ---
 
@@ -71,12 +61,14 @@ Commit to the active feature branch and push.
 ご参考までに！
 ```
 
-### Do NOT
+<important if="writing a newsletter">
+Do NOT:
 - Use `#` headers inside the newsletter body
 - Use bullet-point lists as the main content structure
-- Write like a news article or press release
-- Use multiple `##` sections like a report
+- Write like a news article or press release (no "今日のハイライト", no "01｜" section headers)
+- Cover multiple news topics as a roundup — pick ONE theme and go deep
 - Pad with filler phrases
+</important>
 
 ---
 
@@ -93,8 +85,10 @@ Commit to the active feature branch and push.
 - **Codebase exploration**: use `Explore` agent
 - **Planning complex changes**: use `Plan` agent
 - Run independent research queries in parallel when possible
+- Use Opus for planning/review, Sonnet for writing/execution
 
 ## Context Management
 
 - Run `/compact` when context reaches ~50% to maintain performance
 - Keep this CLAUDE.md under 200 lines
+- Use `/rewind` (Esc Esc) to undo if Claude goes off-track
